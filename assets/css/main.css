@@ -4951,3 +4951,548 @@ section,
     opacity: 0.75;
   }
 }
+
+/*--------------------------------------------------------------
+# Locations and Contact Section
+--------------------------------------------------------------*/
+
+.locations-section {
+  position: relative;
+  padding: 100px 0;
+  overflow: hidden;
+  background: #f6f9f8;
+}
+
+.locations-section::before {
+  content: "";
+  position: absolute;
+  top: -180px;
+  right: -160px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: rgba(15, 118, 110, 0.07);
+  pointer-events: none;
+}
+
+.locations-section::after {
+  content: "";
+  position: absolute;
+  bottom: -220px;
+  left: -180px;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.06);
+  pointer-events: none;
+}
+
+.locations-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/*--------------------------------------------------------------
+# Section Header
+--------------------------------------------------------------*/
+
+.locations-header {
+  max-width: 760px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.locations-subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  color: #0f766e;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.locations-subtitle::before,
+.locations-subtitle::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: rgba(15, 118, 110, 0.4);
+}
+
+.locations-header h2 {
+  margin: 0 0 16px;
+  color: #163a33;
+  font-size: clamp(2.2rem, 4vw, 3.3rem);
+  font-weight: 750;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+.locations-header p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/*--------------------------------------------------------------
+# Location Cards
+--------------------------------------------------------------*/
+
+.location-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 390px;
+  padding: 34px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 118, 110, 0.12);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow:
+    0 18px 45px rgba(20, 65, 55, 0.06),
+    0 2px 8px rgba(20, 65, 55, 0.03);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.location-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    #0f766e,
+    #16a34a
+  );
+}
+
+.location-card::after {
+  content: "";
+  position: absolute;
+  top: -85px;
+  right: -85px;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: rgba(15, 118, 110, 0.05);
+  transition: transform 0.4s ease;
+}
+
+.location-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(15, 118, 110, 0.23);
+  box-shadow:
+    0 28px 65px rgba(20, 65, 55, 0.12),
+    0 4px 12px rgba(20, 65, 55, 0.05);
+}
+
+.location-card:hover::after {
+  transform: scale(1.15);
+}
+
+/* Location Card Header */
+
+.location-card-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.location-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 18px;
+  color: #ffffff;
+  font-size: 1.55rem;
+  background: linear-gradient(
+    135deg,
+    #0f766e,
+    #15803d
+  );
+  box-shadow: 0 12px 25px rgba(15, 118, 110, 0.22);
+}
+
+.location-number {
+  color: rgba(15, 118, 110, 0.12);
+  font-size: 2.7rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* Location Card Content */
+
+.location-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.location-city {
+  display: block;
+  margin-bottom: 10px;
+  color: #0f766e;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.location-card-content h3 {
+  margin: 0 0 22px;
+  color: #173b34;
+  font-size: 1.38rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.location-address {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-bottom: 30px;
+}
+
+.location-address > i {
+  margin-top: 4px;
+  color: #0f766e;
+  font-size: 1.15rem;
+}
+
+.location-address p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.96rem;
+  line-height: 1.85;
+}
+
+/* Map Button */
+
+.location-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  gap: 10px;
+  margin-top: auto;
+  padding: 12px 19px;
+  border: 1px solid rgba(15, 118, 110, 0.18);
+  border-radius: 999px;
+  color: #0f766e;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: rgba(15, 118, 110, 0.06);
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.location-button:hover {
+  color: #ffffff;
+  border-color: #0f766e;
+  background: #0f766e;
+  transform: translateX(4px);
+}
+
+.location-button i {
+  font-size: 0.83rem;
+}
+
+/*--------------------------------------------------------------
+# Contact Area
+--------------------------------------------------------------*/
+
+.contact-area {
+  position: relative;
+  margin-top: 34px;
+  padding: 36px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 118, 110, 0.12);
+  border-radius: 24px;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(15, 118, 110, 0.06),
+      rgba(34, 197, 94, 0.03)
+    ),
+    #ffffff;
+  box-shadow:
+    0 18px 45px rgba(20, 65, 55, 0.06),
+    0 2px 8px rgba(20, 65, 55, 0.03);
+}
+
+.contact-area::after {
+  content: "@";
+  position: absolute;
+  top: -45px;
+  right: 25px;
+  color: rgba(15, 118, 110, 0.035);
+  font-size: 12rem;
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.contact-area-header {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin-bottom: 27px;
+}
+
+.contact-area-header > span {
+  display: block;
+  margin-bottom: 7px;
+  color: #0f766e;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.contact-area-header h3 {
+  margin: 0 0 9px;
+  color: #173b34;
+  font-size: 1.6rem;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.contact-area-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/*--------------------------------------------------------------
+# Email Cards
+--------------------------------------------------------------*/
+
+.email-card {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 17px;
+  height: 100%;
+  min-height: 120px;
+  padding: 21px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 118, 110, 0.12);
+  border-radius: 18px;
+  color: inherit;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 10px 24px rgba(20, 65, 55, 0.045);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.email-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    #0f766e,
+    #22c55e
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.email-card:hover {
+  color: inherit;
+  text-decoration: none;
+  transform: translateY(-4px);
+  border-color: rgba(15, 118, 110, 0.25);
+  background: #ffffff;
+  box-shadow: 0 16px 32px rgba(20, 65, 55, 0.09);
+}
+
+.email-card:hover::before {
+  opacity: 1;
+}
+
+.email-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  color: #ffffff;
+  font-size: 1.25rem;
+  background: linear-gradient(
+    135deg,
+    #0f766e,
+    #16a34a
+  );
+  box-shadow: 0 10px 20px rgba(15, 118, 110, 0.18);
+}
+
+.email-content {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.email-content span {
+  margin-bottom: 4px;
+  color: #0f766e;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.email-content strong {
+  overflow: hidden;
+  margin-bottom: 4px;
+  color: #173b34;
+  font-size: 1rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.email-content small {
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.email-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 37px;
+  height: 37px;
+  border: 1px solid rgba(15, 118, 110, 0.13);
+  border-radius: 50%;
+  color: #0f766e;
+  background: rgba(15, 118, 110, 0.05);
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.email-card:hover .email-arrow {
+  color: #ffffff;
+  background: #0f766e;
+  transform: translate(2px, -2px);
+}
+
+/*--------------------------------------------------------------
+# Responsive
+--------------------------------------------------------------*/
+
+@media (max-width: 991px) {
+  .locations-section {
+    padding: 80px 0;
+  }
+
+  .location-card {
+    min-height: 365px;
+  }
+}
+
+@media (max-width: 767px) {
+  .locations-section {
+    padding: 65px 0;
+  }
+
+  .locations-header {
+    margin-bottom: 38px;
+  }
+
+  .locations-header h2 {
+    font-size: 2.1rem;
+  }
+
+  .locations-header p {
+    font-size: 0.95rem;
+  }
+
+  .location-card {
+    min-height: auto;
+    padding: 28px 24px;
+    border-radius: 20px;
+  }
+
+  .location-card-header {
+    margin-bottom: 24px;
+  }
+
+  .location-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    font-size: 1.4rem;
+  }
+
+  .location-number {
+    font-size: 2.3rem;
+  }
+
+  .location-card-content h3 {
+    font-size: 1.22rem;
+  }
+
+  .contact-area {
+    padding: 28px 24px;
+    border-radius: 20px;
+  }
+
+  .contact-area-header h3 {
+    font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .email-card {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .email-arrow {
+    display: none;
+  }
+
+  .email-content strong {
+    font-size: 0.91rem;
+  }
+
+  .email-content small {
+    font-size: 0.76rem;
+  }
+}
