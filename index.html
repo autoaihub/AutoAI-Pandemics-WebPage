@@ -663,7 +663,7 @@
 
             <div class="stats-item d-flex align-items-center">
               <span data-purecounter-start="0" data-purecounter-end="49" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Awards</strong> have been earned by our projects</p>
+              <p><strong>Awards and recognitions</strong> have been earned by our projects</p>
             </div>
 
           </div>
@@ -7688,39 +7688,191 @@
     let awardsCurrentPage = 1;
 
     function paginateAwards() {
-        // Converte os filhos do contêiner de prêmios em um array
-        const allAwards = Array.from(awardsContainer.children);
-        // Calcula o total de páginas necessárias
-        const totalPages = Math.ceil(allAwards.length / awardsPerPage);
 
-        // Esconde todos os itens de prêmios
-        allAwards.forEach(award => award.style.display = 'none');
+      const allAwards = Array.from(awardsContainer.children);
 
-        // Determina quais itens de prêmios mostrar na página atual
-        const start = (awardsCurrentPage - 1) * awardsPerPage;
-        const end = start + awardsPerPage;
-        allAwards.slice(start, end).forEach(award => award.style.display = '');
+      const totalPages = Math.ceil(
+          allAwards.length / awardsPerPage
+      );
 
-        // Limpa o elemento de paginação anterior e prepara um novo contêiner para os botões
-        awardsPaginationElement.innerHTML = '';
-        const paginationContainer = document.createElement('div');
-        // Aplica classes do Bootstrap para alinhamento e espaço
-        paginationContainer.className = 'd-flex justify-content-center mt-3';
+      allAwards.forEach(
+          award => award.style.display = 'none'
+      );
 
-        // Cria um botão de paginação para cada página
-        for (let i = 1; i <= totalPages; i++) {
-            const button = document.createElement('button');
-            button.textContent = i;
-            // Aplica classes do Bootstrap aos botões
-            button.className = 'btn btn-primary me-2';
-            // Define a função a ser chamada quando o botão é clicado
-            button.onclick = () => changeAwardsPage(i);
-            // Adiciona o botão ao contêiner de flex
-            paginationContainer.appendChild(button);
-        }
+      const start =
+          (awardsCurrentPage - 1) * awardsPerPage;
 
-        // Adiciona o contêiner de botões ao elemento de paginação
-        awardsPaginationElement.appendChild(paginationContainer);
+      const end =
+          start + awardsPerPage;
+
+      allAwards
+          .slice(start, end)
+          .forEach(
+              award => award.style.display = ''
+          );
+
+
+      awardsPaginationElement.innerHTML = '';
+
+      const paginationContainer =
+          document.createElement('div');
+
+      paginationContainer.className =
+          'd-flex justify-content-center align-items-center flex-wrap mt-3';
+
+
+      // ===============================
+      // BOTÃO DE PÁGINA
+      // ===============================
+
+      function addPageButton(page) {
+
+          const button =
+              document.createElement('button');
+
+          button.textContent = page;
+
+          button.className = 'btn me-2 mb-2';
+
+          if (page === awardsCurrentPage) {
+
+              button.classList.add(
+                  'btn-primary'
+              );
+
+          } else {
+
+              button.classList.add(
+                  'btn-outline-primary'
+              );
+
+          }
+
+          button.onclick = () =>
+              changeAwardsPage(page);
+
+          paginationContainer
+              .appendChild(button);
+      }
+
+
+      // ===============================
+      // RETICÊNCIAS
+      // ===============================
+
+      function addDots() {
+
+          const dots =
+              document.createElement('span');
+
+          dots.textContent = '...';
+
+          dots.className =
+              'me-2 mb-2 fw-bold';
+
+          paginationContainer
+              .appendChild(dots);
+      }
+
+
+      // ===============================
+      // PAGINAÇÃO COMPACTA
+      // ===============================
+
+      if (totalPages <= 7) {
+
+          for (
+              let i = 1;
+              i <= totalPages;
+              i++
+          ) {
+
+              addPageButton(i);
+
+          }
+
+      } else {
+
+          // Primeira página
+          addPageButton(1);
+
+
+          let startPage =
+              Math.max(
+                  2,
+                  awardsCurrentPage - 2
+              );
+
+          let endPage =
+              Math.min(
+                  totalPages - 1,
+                  awardsCurrentPage + 2
+              );
+
+
+          // Próximo do início
+          if (awardsCurrentPage <= 4) {
+
+              startPage = 2;
+              endPage = 6;
+
+          }
+
+
+          // Próximo do fim
+          if (
+              awardsCurrentPage >=
+              totalPages - 3
+          ) {
+
+              startPage =
+                  totalPages - 5;
+
+              endPage =
+                  totalPages - 1;
+
+          }
+
+
+          if (startPage > 2) {
+
+              addDots();
+
+          }
+
+
+          for (
+              let i = startPage;
+              i <= endPage;
+              i++
+          ) {
+
+              addPageButton(i);
+
+          }
+
+
+          if (
+              endPage <
+              totalPages - 1
+          ) {
+
+              addDots();
+
+          }
+
+
+          // Última página
+          addPageButton(
+              totalPages
+          );
+      }
+
+
+      awardsPaginationElement
+          .appendChild(
+              paginationContainer
+          );
     }
 
     function changeAwardsPage(newPage) {
